@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     const QRect availableGeometry = QApplication::desktop()->availableGeometry(this);
     resize(availableGeometry.width(), availableGeometry.height());
+    setMinimumWidth(availableGeometry.width());
 
     audio = nullptr;
     wifi = nullptr;
