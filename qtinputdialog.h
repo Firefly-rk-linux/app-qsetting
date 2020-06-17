@@ -16,7 +16,7 @@ public:
     static inputDialog* getInstance(QWidget *parent = nullptr)
     {
         if (!_instance) {
-            _instance = new inputDialog(parent);
+            _instance = new inputDialog;
         }
         return _instance;
     }
