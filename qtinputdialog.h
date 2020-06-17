@@ -23,6 +23,8 @@ public:
     void setText(QString yes, QString no, QString text);
     QString getEditText(){return wordEdit->text();}
     int exec();
+    bool isRunning();
+    void exit(bool result);
 
 private:
     static inputDialog* _instance;

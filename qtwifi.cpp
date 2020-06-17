@@ -153,6 +153,9 @@ void qtWifi::on_itemClicked(QListWidgetItem *item)
     inputDialog *dialog = inputDialog::getInstance(this);
     QString ssid = item->text();
     dialog->setText("Connect", "Cancel", "Password of " + item->text());
+    if (dialog->isRunning())
+        dialog->exit(false);
+
     int result = dialog->exec();
     if(result){
         QString str = dialog->getEditText();
