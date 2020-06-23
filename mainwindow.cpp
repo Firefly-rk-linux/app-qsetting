@@ -163,7 +163,7 @@ void MainWindow::on_itemClicked(QListWidgetItem *item)
         stack.addWidget(audio);
         stack.setCurrentIndex(stack.indexOf(audio));
     } else if(! item->text().compare("WiFi")){
-        wifi = new qtWifi(this, &subTitle, &toggleBtn, isWifiOn);
+        wifi = qtWifi::getInstance(this, &subTitle, &toggleBtn, isWifiOn);
         stack.addWidget(wifi);
         stack.setCurrentIndex(stack.indexOf(wifi));
     } else if(! item->text().compare("BT")){
