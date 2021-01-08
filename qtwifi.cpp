@@ -132,7 +132,8 @@ int qtWifi::wifi_callback(RK_WIFI_RUNNING_State_e state,
 
     if (state == RK_WIFI_State_CONNECTED) {
         printf("RK_WIFI_State_CONNECTED\n");
-        wifi->ssid = QLatin1String(info->ssid);
+        //wifi->ssid = QLatin1String(info->ssid);
+        wifi->ssid = QString(info->ssid);
         wifi->text->setText(wifi->ssid + " Connected");
     } else if (state == RK_WIFI_State_CONNECTFAILED) {
         printf("RK_WIFI_State_CONNECTFAILED\n");

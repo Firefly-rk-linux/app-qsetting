@@ -145,7 +145,8 @@ void qtBT::open()
     rk_bt_register_dev_found_callback(qtBT::scan_cb);
     rk_bt_source_register_status_cb(NULL, source_connect_cb);
     rk_bt_set_device_name("Rockchip Linux BT");
-    rk_bt_start_discovery(3000, SCAN_TYPE_AUTO);
+    rk_bt_start_discovery(1000, SCAN_TYPE_AUTO);
+    rk_bt_enable_reconnect(0);
     rk_bt_source_open();
     rk_bt_get_paired_devices(&g_dev_list_test, &count);
 
