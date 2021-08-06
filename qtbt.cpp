@@ -179,10 +179,8 @@ qtBT::qtBT(QWidget *parent, QLabel *label, QPushButton *btn, bool on)
 {
     const QRect availableGeometry = QApplication::desktop()->availableGeometry(parent);
     resize(availableGeometry.width(), availableGeometry.height());
-
     QFont font;
-    font.setPixelSize(availableGeometry.height()/20);
-
+    font.setPixelSize(availableGeometry.height()/40);
     if(btn){
         switchBtn = btn;
         switchBtn->setCheckable(true);
