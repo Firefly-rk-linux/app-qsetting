@@ -212,7 +212,7 @@ void qtWifi::on_itemClicked(QListWidgetItem *item)
         pswd = s_pswd.c_str();
 
         printf("ssid: %s, %s\n", c_ssid, pswd);
-        if (RK_wifi_connect(c_ssid, pswd) < 0)
+        if (RK_wifi_connect((char *)c_ssid, pswd) < 0)
             printf("RK_wifi_connect1 fail!\n");
     }
 }
