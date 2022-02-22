@@ -62,7 +62,7 @@ void qtBT::scan_status_cb(RK_BT_DISCOVERY_STATE status)
             case RK_BT_DISC_STOPPED_BY_USER:
                     break;
             case RK_BT_DISC_STOPPED_AUTO:
-                    #ifdef RKDEVICEIO
+                    #ifdef RKWIFIBTAPP
                     rk_bt_start_discovery(1000, SCAN_TYPE_AUTO);
                     #endif
                     break;
@@ -127,7 +127,7 @@ void qtBT::scan_cb(const char *address,const char *name, unsigned int bt_class, 
 
 void qtBT::open()
 {
-#ifdef RKDEVICEIO
+#ifdef RKWIFIBTAPP
     int count;
     RkBtScanedDevice *dev = NULL;
     static RkBtScanedDevice *g_dev_list_test;
@@ -169,7 +169,7 @@ void qtBT::open()
 void qtBT::close()
 {
     qDebug() << "bt close";
-#ifdef RKDEVICEIO
+#ifdef RKWIFIBTAPP
     rk_bt_cancel_discovery();
     rk_bt_deinit();
 #endif
@@ -207,7 +207,7 @@ qtBT::qtBT(QWidget *parent, QLabel *label, QPushButton *btn, bool on)
 
 qtBT::~qtBT()
 {
-    #ifdef RKDEVICEIO
+    #ifdef RKWIFIBTAPP
     rk_bt_cancel_discovery();
     #endif
     if(switchBtn){
@@ -271,18 +271,18 @@ void qtBT::on_itemClicked(QListWidgetItem *item)
     if(!addr.isEmpty()){
         if(!pair.compare("Paired")){
             qDebug() << "connectint to " << addr.toLatin1().data();
-            #ifdef RKDEVICEIO
+            #ifdef RKWIFIBTAPP
             rk_bt_source_connect_by_addr(addr.toLatin1().data());
             #endif
         }else if(!pair.compare("Connected")){
             qDebug() << "disconnecting " << addr << name;
-            #ifdef RKDEVICEIO
+            #ifdef RKWIFIBTAPP
             rk_bt_source_disconnect_by_addr(addr.toLatin1().data());
             #endif
             takeItem(row(item));
         }else{
             qDebug() << "connectint to " << addr.toLatin1().data();
-            #ifdef RKDEVICEIO
+            #ifdef RKWIFIBTAPP
             rk_bt_source_connect_by_addr(addr.toLatin1().data());
             #endif
         }
