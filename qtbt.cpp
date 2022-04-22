@@ -17,8 +17,10 @@ void qtBT::state_cb(RK_BT_STATE state)
             case RK_BT_STATE_ON:
                     qDebug() << "RK_BT_STATE_ON";
                     qDebug() << "RK_START_SCAN 10s";
+                    #ifdef RKWIFIBTAPP
                     rk_bt_start_discovery(10000, SCAN_TYPE_BREDR);
                     rk_bt_source_open();
+                    #endif
                     break;
             case RK_BT_STATE_TURNING_OFF:
                     qDebug() << "RK_BT_STATE_TURNING_OFF";
@@ -49,7 +51,7 @@ void qtBT::scan_status_cb(RK_BT_DISCOVERY_STATE status)
                     break;
             case RK_BT_DISC_STOPPED_AUTO:
                     #ifdef RKWIFIBTAPP
-                    //rk_bt_start_discovery(10000, SCAN_TYPE_BREDR);
+                    rk_bt_start_discovery(10000, SCAN_TYPE_BREDR);
                     #endif
                     break;
     }
